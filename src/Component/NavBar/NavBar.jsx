@@ -1,37 +1,47 @@
 import React from "react";
+import logo from "../../assets/logo.png";
+import { FaGithub } from "react-icons/fa";
+import { NavLink } from "react-router";
 
 const NavBar = () => {
+  let listStyle = [
+    <>
+      <li>
+        <NavLink key={"1"}>Home</NavLink>
+      </li >
+      <li>
+        <NavLink key={"2"}>App</NavLink>
+      </li>
+      <li >
+        <NavLink key={"3"}>Installation</NavLink>
+      </li>
+
+
+    </>,
+  ];
   return (
-    <div className="navbar bg-base-100 shadow-sm">
-      <div className="navbar-start">
-        <a className="btn btn-ghost text-xl">daisyUI</a>
+    <div className="navbar bg-base-100 shadow-sm px-15 min-[600px]:flex min-[600px]:space-x-2.5 min-[600px]:justify-between max-[600px]:flex-col min-[600px]:items-center">
+      <div className="flex items-center">
+        <img src={logo} alt="logo" width={30} height={30} />
+        <h1 className=" font-semibold bg-linear-to-r from-[#632EE3] to-[#9F62F2] bg-clip-text text-transparent">
+          HERO.IO
+        </h1>
       </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
-        </ul>
+      <ul className=" menu-horizontal space-x-5 font-semibold px-1 max-[600px]:hidden" >
+        {listStyle}
+      </ul>
+      <div className="">
+        <a
+          href="https://github.com/shajeb17/assigenment8"
+          className="bg-linear-to-r from-[#632EE3] to-[#9F62F2] flex items-center gap-1 p-[4px_13px] rounded-md text-white"
+        >
+          <FaGithub></FaGithub> Contribute
+        </a>
       </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
-      </div>
+
+      <ul className=" menu-horizontal space-x-5 font-semibold px-1 min-[600px]:hidden">
+        {listStyle}
+      </ul>
     </div>
   );
 };
