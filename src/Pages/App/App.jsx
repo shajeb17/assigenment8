@@ -1,11 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDataHook } from "../../hooks/useDataHook";
 import SingleCard from "../Home/SingleCard";
+import { FadeLoader } from "react-spinners";
+import { Link } from "react-router";
 
 const App = () => {
-  let { data } = useDataHook();
+  let { data, loading } = useDataHook();
   let collectData = data?.data;
-  console.log(collectData);
+
+  let [storeData, setStoreData] = useState();
+  let [inputChack,setInputChack]=useState("")
+  useEffect(() => {
+    setStoreData(collectData);
+  }, [collectData]);
+
+  let handleclick = (e) => {
+    let inputVal = e.target.value;
+    setInputChack(inputVal)
+    let conVal = inputChack.trim().toLowerCase();
+    let filter =
+      collectData.filter((mydata) =>
+        mydata.title.toLowerCase().includes(conVal)
+      ) || [];
+    setStoreData(filter);
+  };
+  let showall=()=>{
+     setInputChack("")
+     setStoreData(collectData)
+  }
 
   return (
     <div className="w-10/12 m-auto">
@@ -16,7 +38,7 @@ const App = () => {
         </p>
       </div>
       <div className="flex items-center justify-between pt-8">
-        <h2>Apps Found ({collectData?.length})</h2>
+        <h2>Apps Found ({storeData?.length})</h2>
         <label className="input">
           <svg
             className="h-[1em] opacity-50"
@@ -34,15 +56,33 @@ const App = () => {
               <path d="m21 21-4.3-4.3"></path>
             </g>
           </svg>
-          <input type="search" required placeholder="Search App" />
+          <input
+            type="search"
+            onChange={handleclick}
+            required
+            placeholder="Search App"
+             value={inputChack}
+          />
         </label>
       </div>
 
-      <div className="grid grid-cols-4 gap-3 pt-5">
-        {collectData?.map((mydata) => (
+      {loading === true ? (
+        <div className="w-full h-screen flex justify-center m-auto items-center text-center">
+          <FadeLoader />
+        </div>
+        ) : storeData?.length > 0 ? (
+        <div className="grid grid-cols-4 gap-3 pt-5">
+          {
+          storeData?.map((mydata) => (
           <SingleCard key={mydata?.id} mydata={mydata}></SingleCard>
-        ))}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <div className=" w-full">
+          <h1 className="text-center mt-10 font-bold text-3xl text-[#00000077]">There is no data found</h1>
+        <button onClick={showall} className="btn btn-primary m-auto flex  mt-6">Show All App</button>
+        </div>
+      )}
     </div>
   );
 };
