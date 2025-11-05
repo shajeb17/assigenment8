@@ -7,7 +7,7 @@ import { Link } from "react-router";
 
 const Home = () => {
   let { data } = useDataHook();
-  let dataAdd = data?.data?.slice(0,8);
+  let dataAdd = data?.data?.slice(0, 8);
 
   return (
     <div>
@@ -29,10 +29,12 @@ const Home = () => {
         </div>
       </div>
       <div className="w-full flex py-5">
-
-      <Link to={"/app"} className=" btn px-7 bg-linear-to-r from-[#632EE3] to-[#9F62F2] text-white m-auto text-center items-center justify-center ">
-        Show All
-      </Link>
+        <Link
+          to={"/app"}
+          className=" btn px-7 bg-linear-to-r from-[#632EE3] to-[#9F62F2] text-white m-auto text-center items-center justify-center "
+        >
+          Show All
+        </Link>
       </div>
     </div>
   );
