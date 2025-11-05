@@ -1,16 +1,14 @@
-import React from 'react';
-import NavBar from '../Component/NavBar/NavBar';
-import Herotop from '../Component/HeroSection/Herotop';
-import Counter from '../Component/counter/Counter';
+import React from "react";
+import NavBar from "../Component/NavBar/NavBar";
+import { Outlet } from "react-router";
 
 const MainLayout = () => {
-    return (
-        <div>
-            <NavBar></NavBar>
-            <Herotop></Herotop>
-            <Counter></Counter>
-        </div>
-    );
+  return (
+    <div>
+      <NavBar></NavBar>
+      <Outlet></Outlet>
+    </div>
+  );
 };
 
 export default MainLayout;

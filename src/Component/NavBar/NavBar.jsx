@@ -5,19 +5,16 @@ import { NavLink } from "react-router";
 
 const NavBar = () => {
   let listStyle = [
-    <>
-      <li>
-        <NavLink key={"1"}>Home</NavLink>
-      </li >
-      <li>
-        <NavLink key={"2"}>App</NavLink>
-      </li>
-      <li >
-        <NavLink key={"3"}>Installation</NavLink>
-      </li>
+  <li key="home">
+    <NavLink to={"/"}>Home</NavLink>
+  </li>,
+  <li key="app">
+    <NavLink to={"/app"}>App</NavLink>
+  </li>,
+  <li key="install">
+    <NavLink to={"/installation"}>Installation</NavLink>
+  </li>,
 
-
-    </>,
   ];
   return (
     <div className="navbar bg-base-100 shadow-sm px-15 min-[600px]:flex min-[600px]:space-x-2.5 min-[600px]:justify-between max-[600px]:flex-col min-[600px]:items-center">
