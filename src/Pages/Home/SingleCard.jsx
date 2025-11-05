@@ -22,7 +22,7 @@ const SingleCard = ({ mydata }) => {
           <FaDownload></FaDownload> {downloads}
         </div>
         <div className="text-[13px] px-1.5 bg-[#f5f5f5] flex items-center gap-1 text-red-400">
-          <FaStar></FaStar> {ratingAvg}
+          <FaStar> </FaStar> {ratingAvg}
         </div>
       </div>
     </div>
