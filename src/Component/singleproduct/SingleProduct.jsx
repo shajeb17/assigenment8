@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
-import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
 
 const SingleProduct = () => {
+  let [btnFls, setBtnFls] = useState(false);
+
+
   let location = useLocation();
   let mydata = location.state;
   let {
@@ -15,8 +26,32 @@ const SingleProduct = () => {
     title,
     reviews,
     size,
+    id,
   } = mydata;
-  console.log(ratings);
+
+    useEffect(() => {
+    let data = localStorage.getItem("appid");
+    let parse = JSON.parse(data);
+    if (parse?.includes(id)) {
+      setBtnFls(true);
+    }
+  }, [id]);
+
+  let handeClick = (myid) => {
+    let collect = localStorage.getItem("appid");
+    if (!collect) {
+      localStorage.setItem("appid", JSON.stringify([myid]));
+    } else {
+      let dataid = JSON.parse(collect);
+
+      if (!dataid?.includes(myid)) {
+        dataid.push(myid);
+        localStorage.setItem("appid", JSON.stringify(dataid));
+      }
+    }
+     setBtnFls(true);
+  };
+
 
   return (
     <div className="w-10/12 m-auto">
@@ -99,8 +134,13 @@ const SingleProduct = () => {
             </div>
           </div>
 
-          <button className="w-full md:w-auto px-8 py-3 bg-teal-400 text-white font-semibold rounded-lg shadow-md hover:bg-teal-500 transition-colors text-base">
-            Install Now ( {size} MB)
+          <button
+            onClick={() => handeClick(id)}
+            className="w-full md:w-auto px-8 py-3 bg-teal-400 text-white font-semibold disabled rounded-lg shadow-md
+             hover:bg-teal-500 transition-colors text-base"
+            disabled={btnFls}
+          >
+            {btnFls ? "Install" : `Install Now ( ${size} MB)`}
           </button>
         </div>
       </div>
@@ -129,7 +169,7 @@ const SingleProduct = () => {
       </div>
 
       <div className="pb-7 flex gap-2.5">
-           description :  <p className="text-[#00000066]">{description}</p>
+        description : <p className="text-[#00000066]">{description}</p>
       </div>
     </div>
   );
