@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../../assets/logo.png";
 import { FaGithub } from "react-icons/fa";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const NavBar = () => {
   let listStyle = [
@@ -20,9 +20,9 @@ const NavBar = () => {
     <div className="navbar bg-base-100 shadow-sm px-15 min-[600px]:flex min-[600px]:space-x-2.5 min-[600px]:justify-between max-[600px]:flex-col min-[600px]:items-center">
       <div className="flex items-center">
         <img src={logo} alt="logo" width={30} height={30} />
-        <h1 className=" font-semibold bg-linear-to-r from-[#632EE3] to-[#9F62F2] bg-clip-text text-transparent">
+        <Link to={"/"} className=" font-semibold bg-linear-to-r from-[#632EE3] to-[#9F62F2] bg-clip-text text-transparent">
           HERO.IO
-        </h1>
+        </Link>
       </div>
       <ul className=" menu-horizontal space-x-5 font-semibold px-1 max-[600px]:hidden" >
         {listStyle}

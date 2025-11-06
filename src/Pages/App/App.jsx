@@ -9,14 +9,14 @@ const App = () => {
   let collectData = data?.data;
 
   let [storeData, setStoreData] = useState();
-  let [inputChack,setInputChack]=useState("")
+  let [inputChack, setInputChack] = useState("");
   useEffect(() => {
     setStoreData(collectData);
   }, [collectData]);
 
   let handleclick = (e) => {
     let inputVal = e.target.value;
-    setInputChack(inputVal)
+    setInputChack(inputVal);
     let conVal = inputChack.trim().toLowerCase();
     let filter =
       collectData.filter((mydata) =>
@@ -24,20 +24,20 @@ const App = () => {
       ) || [];
     setStoreData(filter);
   };
-  let showall=()=>{
-     setInputChack("")
-     setStoreData(collectData)
-  }
+  let showall = () => {
+    setInputChack("");
+    setStoreData(collectData);
+  };
 
   return (
-    <div className="w-10/12 m-auto">
+    <div className="w-10/12 m-auto pb-10">
       <div className="text-center py-5">
         <h1 className="font-bold text-3xl">Our All Applications</h1>
         <p className="mt-3 text-[#0000007b]">
           Explore All Apps on the Market developed by us. We code for Millions
         </p>
       </div>
-      <div className="flex items-center justify-between pt-8">
+      <div className="flex items-center max-[550px]:flex-col max-[550px]:gap-2 justify-between pt-8">
         <h2>Apps Found ({storeData?.length})</h2>
         <label className="input">
           <svg
@@ -61,26 +61,32 @@ const App = () => {
             onChange={handleclick}
             required
             placeholder="Search App"
-             value={inputChack}
+            value={inputChack}
           />
         </label>
       </div>
 
       {loading === true ? (
-        <div className="w-full h-screen flex justify-center m-auto items-center text-center">
+        <div className="w-full h-screen flex justify-centerc m-auto items-center text-center">
           <FadeLoader />
         </div>
-        ) : storeData?.length > 0 ? (
-        <div className="grid grid-cols-4 gap-3 pt-5">
-          {
-          storeData?.map((mydata) => (
-          <SingleCard key={mydata?.id} mydata={mydata}></SingleCard>
+      ) : storeData?.length > 0 ? (
+        <div className="grid grid-cols-4  max-[1000px]:grid max-[1000px]:grid-cols-2 max-[500px]:grid-cols-1  gap-3 pt-5">
+          {storeData?.map((mydata) => (
+            <SingleCard key={mydata?.id} mydata={mydata}></SingleCard>
           ))}
         </div>
       ) : (
         <div className=" w-full">
-          <h1 className="text-center mt-10 font-bold text-3xl text-[#00000077]">There is no data found</h1>
-        <button onClick={showall} className="btn btn-primary m-auto flex  mt-6">Show All App</button>
+          <h1 className="text-center mt-10 font-bold text-3xl text-[#00000077]">
+            There is no data found
+          </h1>
+          <button
+            onClick={showall}
+            className="btn btn-primary m-auto flex  mt-6"
+          >
+            Show All App
+          </button>
         </div>
       )}
     </div>

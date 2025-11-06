@@ -22,7 +22,7 @@ const Home = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-4 gap-3.5">
+        <div className="grid grid-cols-4 gap-3.5 max-[1000px]:grid-cols-2 max-[500px]:grid-cols-1">
           {dataAdd?.map((mydata) => (
             <SingleCard key={mydata?.id} mydata={mydata}></SingleCard>
           ))}
