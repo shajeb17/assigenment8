@@ -67,7 +67,7 @@ const App = () => {
       </div>
 
       {loading === true ? (
-        <div className="w-full h-screen flex justify-centerc m-auto items-center text-center">
+        <div className="w-full h-screen flex justify-center m-auto items-center text-center">
           <FadeLoader />
         </div>
       ) : storeData?.length > 0 ? (

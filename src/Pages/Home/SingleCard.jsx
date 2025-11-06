@@ -1,11 +1,14 @@
 import React from "react";
 import { FaDownload, FaStar } from "react-icons/fa";
+import { Link } from "react-router";
 
 const SingleCard = ({ mydata }) => {
-  let { image, companyName, downloads, ratingAvg, title } = mydata;
+  let { image, companyName, downloads, ratingAvg, title ,id} = mydata;
   console.log(mydata);
 
   return (
+    <Link to={"/sinpleProduct"} state={mydata}>
+
     <div className="bg-white p-2.5 rounded-lg w-full shadow-xl">
       <div className="w-full h-[180px]">
         <img
@@ -26,6 +29,7 @@ const SingleCard = ({ mydata }) => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 

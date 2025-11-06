@@ -521,22 +521,23 @@
       { "name": "5 star", "count": 21800000 }
     ]
   },
-  {
-    "image": "https://example.com/images/adobeexpress.png",
-    "title": "Adobe Express",
-    "companyName": "Adobe Inc.",
-    "id": 30,
-    "description": "Adobe Express lets you create beautiful social media posts, videos, and logos in minutes.",
-    "size": 110,
-    "reviews": 8000000,
-    "ratingAvg": 4.6,
-    "downloads": "100M+",
-    "ratings": [
-      { "name": "1 star", "count": 70000 },
-      { "name": "2 star", "count": 90000 },
-      { "name": "3 star", "count": 200000 },
-      { "name": "4 star", "count": 600000 },
-      { "name": "5 star", "count": 7000000 }
-    ]
-  }
+{
+  "image": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Adobe_Express_logo.png",
+  "title": "Adobe Express",
+  "companyName": "Adobe Inc.",
+  "id": 30,
+  "description": "Adobe Express lets you create beautiful social media posts, videos, and logos in minutes.",
+  "size": 110,
+  "reviews": 8000000,
+  "ratingAvg": 4.6,
+  "downloads": "100M+",
+  "ratings": [
+    { "name": "1 star", "count": 70000 },
+    { "name": "2 star", "count": 90000 },
+    { "name": "3 star", "count": 200000 },
+    { "name": "4 star", "count": 600000 },
+    { "name": "5 star", "count": 7000000 }
+  ]
+}
+
 ]
