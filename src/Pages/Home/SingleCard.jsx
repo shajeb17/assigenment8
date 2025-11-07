@@ -4,7 +4,6 @@ import { Link } from "react-router";
 
 const SingleCard = ({ mydata }) => {
   let { image, companyName, downloads, ratingAvg, title ,id} = mydata;
-  console.log(mydata);
 
   return (
     <Link to={"/sinpleProduct"} state={mydata}>

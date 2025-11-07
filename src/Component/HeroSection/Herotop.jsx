@@ -23,16 +23,18 @@ const Herotop = () => {
       <div className="flex items-center gap-5 justify-center mt-5">
         <button className="btn bg-white text-black border-[#e5e5e5] flex items-center">
           <img src={playstore} alt="playstore" width={15} height={15} />
-          Google Play
+
+          <a href="https://play.google.com/store/games?hl=en">Google Play</a>
         </button>
 
         <button className="btn bg-white text-black border-[#e5e5e5] flex items-center">
-          <img src={playstore} alt="playstore" width={15} height={15} />
-          App Store
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_%28iOS%29.svg" alt="playstore" width={15} height={15} />
+
+          <a href="https://www.apple.com/app-store/"> App Store</a>
         </button>
       </div>
 
-      <img src={heroPng} alt="hero png"  width={500} className="m-auto mt-6"/>
+      <img src={heroPng} alt="hero png" width={500} className="m-auto mt-6" />
     </div>
   );
 };

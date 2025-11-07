@@ -10,6 +10,8 @@ const App = () => {
 
   let [storeData, setStoreData] = useState();
   let [inputChack, setInputChack] = useState("");
+  let [searchLoading, setSearchLoading] = useState(false);
+
   useEffect(() => {
     setStoreData(collectData);
   }, [collectData]);
@@ -17,12 +19,14 @@ const App = () => {
   let handleclick = (e) => {
     let inputVal = e.target.value;
     setInputChack(inputVal);
+    setSearchLoading(true)
     let conVal = inputChack.trim().toLowerCase();
     let filter =
       collectData.filter((mydata) =>
         mydata.title.toLowerCase().includes(conVal)
       ) || [];
     setStoreData(filter);
+    setSearchLoading(false)
   };
   let showall = () => {
     setInputChack("");
@@ -66,7 +70,7 @@ const App = () => {
         </label>
       </div>
 
-      {loading === true ? (
+      {loading ||  searchLoading? (
         <div className="w-full h-screen flex justify-center m-auto items-center text-center">
           <FadeLoader />
         </div>
