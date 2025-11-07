@@ -7,7 +7,7 @@ export const useDataHook = () => {
   let [error, setError] = useState(null);
 
   useEffect(() => {
-    axios("../Fetchdata.json")
+    axios("/Fetchdata.json")
       .then((myData) => setData(myData))
       .catch((error) => setError(error))
       .finally(() => setLoadin(false));

@@ -11,7 +11,7 @@ const Installation = () => {
 
   useEffect(() => {
     let collectData = JSON.parse(localStorage.getItem("appid"));
-    let filterData = addData?.filter((mydta) => collectData.includes(mydta.id));
+    let filterData = addData?.filter((mydta) => collectData?.includes(mydta.id));
     setStoreData(filterData);
     setNweStore(filterData);
   }, [addData]);
