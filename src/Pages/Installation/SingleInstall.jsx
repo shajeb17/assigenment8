@@ -1,6 +1,6 @@
 import React from "react";
 
-const SingleInstall = ({ asdData }) => {
+const SingleInstall = ({ asdData,handleChange}) => {
   let { image, companyName, downloads, ratingAvg, title, size, id } = asdData;
 
   let handleClick = (id) => {
@@ -59,7 +59,7 @@ const SingleInstall = ({ asdData }) => {
 
       {/* Right Section: Uninstall Button */}
       <button
-        onClick={() => handleClick(id)}
+        onClick={() => {handleClick(id);handleChange(id)}}
         className="flex-shrink-0 px-4 py-2 bg-emerald-500 text-white font-semibold text-sm rounded-full shadow-md hover:bg-emerald-600 transition-colors"
       >
         Uninstall

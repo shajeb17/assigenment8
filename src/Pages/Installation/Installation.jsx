@@ -5,13 +5,14 @@ import SingleInstall from "./SingleInstall";
 const Installation = () => {
   let { data } = useDataHook();
   let [storeData, setStoreData] = useState();
-
+  let [newStore, setNweStore] = useState();
   let addData = data?.data;
 
   useEffect(() => {
     let collectData = JSON.parse(localStorage.getItem("appid"));
     let filterData = addData?.filter((mydta) => collectData.includes(mydta.id));
     setStoreData(filterData);
+    setNweStore(filterData);
   }, [addData]);
 
   let handleLow = () => {
@@ -22,6 +23,11 @@ const Installation = () => {
   let handleHigh = () => {
     let highto = [...storeData].sort((a, b) => b.size - a.size);
     setStoreData(highto);
+  };
+  let handleChange = (id) => {
+    let newFilter = storeData?.filter((mydta) => mydta.id !== id);
+    setStoreData(newFilter);
+    console.log(newFilter);
   };
 
   return (
@@ -55,7 +61,11 @@ const Installation = () => {
 
         <div className="mt-6 py-3.5">
           {storeData?.map((asdData) => (
-            <SingleInstall key={asdData.id} asdData={asdData}></SingleInstall>
+            <SingleInstall
+              key={asdData.id}
+              asdData={asdData}
+              handleChange={handleChange}
+            ></SingleInstall>
           ))}
         </div>
       </div>
