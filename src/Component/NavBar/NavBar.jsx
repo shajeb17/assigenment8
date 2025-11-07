@@ -29,7 +29,7 @@ const NavBar = () => {
       </ul>
       <div className="">
         <a
-          href="https://github.com/shajeb17/assigenment8"
+          href="https://github.com/shajeb17"
           className="bg-linear-to-r from-[#632EE3] to-[#9F62F2] flex items-center gap-1 p-[4px_13px] rounded-md text-white"
         >
           <FaGithub></FaGithub> Contribute

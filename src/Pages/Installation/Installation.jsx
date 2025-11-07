@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDataHook } from "../../hooks/useDataHook";
 import SingleInstall from "./SingleInstall";
+import ComponentError from "../../Component/error/ComponentError";
 
 const Installation = () => {
-  let { data } = useDataHook();
+  let { data ,error} = useDataHook();
   let [storeData, setStoreData] = useState();
   let [newStore, setNweStore] = useState();
   let addData = data?.data;

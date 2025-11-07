@@ -1,12 +1,22 @@
 import React from "react";
+import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css";
 
-const SingleInstall = ({ asdData,handleChange}) => {
+const SingleInstall = ({ asdData, handleChange }) => {
   let { image, companyName, downloads, ratingAvg, title, size, id } = asdData;
 
   let handleClick = (id) => {
     let collectData = JSON.parse(localStorage.getItem("appid"));
     let filters = collectData.filter((data) => data !== id);
     localStorage.setItem("appid", JSON.stringify(filters));
+    Toastify({
+      text: "Your app was unistall",
+      close: true,
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      },
+      duration: 3000,
+    }).showToast();
   };
 
   return (
@@ -59,7 +69,10 @@ const SingleInstall = ({ asdData,handleChange}) => {
 
       {/* Right Section: Uninstall Button */}
       <button
-        onClick={() => {handleClick(id);handleChange(id)}}
+        onClick={() => {
+          handleClick(id);
+          handleChange(id);
+        }}
         className="flex-shrink-0 px-4 py-2 bg-emerald-500 text-white font-semibold text-sm rounded-full shadow-md hover:bg-emerald-600 transition-colors"
       >
         Uninstall

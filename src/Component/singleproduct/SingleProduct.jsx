@@ -9,13 +9,19 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import ComponentError from "../error/ComponentError";
+import Toastify from "toastify-js";
+import "toastify-js/src/toastify.css";
 
 const SingleProduct = () => {
   let [btnFls, setBtnFls] = useState(false);
 
-
   let location = useLocation();
   let mydata = location.state;
+
+  if (!mydata) {
+    return <ComponentError />;
+  }
   let {
     companyName,
     description,
@@ -29,7 +35,7 @@ const SingleProduct = () => {
     id,
   } = mydata;
 
-    useEffect(() => {
+  useEffect(() => {
     let data = localStorage.getItem("appid");
     let parse = JSON.parse(data);
     if (parse?.includes(id)) {
@@ -49,9 +55,16 @@ const SingleProduct = () => {
         localStorage.setItem("appid", JSON.stringify(dataid));
       }
     }
-     setBtnFls(true);
+    setBtnFls(true);
+    Toastify({
+      text: "Your app was install",
+      close: true,
+      style: {
+        background: "linear-gradient(to right, #00b09b, #96c93d)",
+      },
+      duration: 3000,
+    }).showToast();
   };
-
 
   return (
     <div className="w-10/12 m-auto">

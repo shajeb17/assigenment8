@@ -7,6 +7,7 @@ import { FadeLoader } from "react-spinners";
 
 const MainLayout = () => {
   let { loading } = useDataHook();
+
   return (
     <div className="flex flex-col">
       <NavBar></NavBar>
@@ -21,6 +22,10 @@ const MainLayout = () => {
       )}
       <Footer></Footer>
     </div>
+     
+
+   
+
   );
 };
 
